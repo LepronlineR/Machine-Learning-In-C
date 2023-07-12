@@ -131,6 +131,9 @@ int main() {
 
 	FreeAllocations();
     
+    // free xs and ys
+    free(xs);
+    free(ys);
 
     return 0;
 }
