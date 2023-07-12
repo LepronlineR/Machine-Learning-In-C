@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../Plotter/pbPlots.h"
-#include "../Plotter/supportLib.h"
+#include "pbPlots.h"
+#include "supportLib.h"
 
 /*
 
@@ -18,7 +18,7 @@ f = w * x + b
 
 // given the x and w, gets the result: result
 float* forward(float* x, float w, size_t size){
-    float* result = calloc(sizeof(float), size);
+    float* result = calloc(size, sizeof(float));
     for(size_t i = 0; i < size; i++){
         result[i] = x[i] * w;
     }
@@ -75,10 +75,10 @@ int main() {
 
     // training
     float learningRate = 1e-3;
-    size_t totalEpochs = 500;
+    size_t totalEpochs = 100;
 
-    double* xs = calloc(sizeof(double), totalEpochs);
-    double* ys = calloc(sizeof(double), totalEpochs);
+    double* xs = calloc(totalEpochs, sizeof(double));
+    double* ys = calloc(totalEpochs, sizeof(double));
 
     for(size_t epoch = 0; epoch < totalEpochs; epoch++){
         // predict = forward pass
@@ -97,20 +97,25 @@ int main() {
             printf("Epoch: %d, Loss: %f, W: %f\n", epoch, loss, w);
         }
 
-        xs[epoch] = epoch;
-        ys[epoch] = loss;
+        xs[epoch] = (double) epoch;
+        ys[epoch] = (double) loss;
         
         free(yPred);
     }
 
+    //for(size_t i = 0; i < totalEpochs; i++){
+    //    printf("%lf : %lf\n", xs[i], ys[i]);
+    //}
+
     // plot
+    
 	_Bool success;
 
 	StartArenaAllocator();
 
 	RGBABitmapImageReference *canvasReference = CreateRGBABitmapImageReference();
 	StringReference *errorMessage = CreateStringReference(L"", 0);
-	success = DrawScatterPlot(canvasReference, 600, 400, xs, totalEpochs, ys, totalEpochs, errorMessage);
+	success = DrawScatterPlot(canvasReference, 1200, 800, xs, totalEpochs, ys, totalEpochs, errorMessage);
 
 	if(success){
 		ByteArray *pngdata = ConvertToPNG(canvasReference->image);
@@ -125,6 +130,7 @@ int main() {
 	}
 
 	FreeAllocations();
+    
 
     return 0;
 }
