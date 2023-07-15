@@ -28,6 +28,9 @@ bool matf_sum_n(matf_t* result, const matf_t* m1, const matf_t* m2);
 // m1 • m2, output result, returns false if the operation is invalid (result will be allocated in this function)
 bool matf_dot(matf_t* result, const matf_t* m1, const matf_t* m2);
 
+// m1^T, output result, returns false if the operation is invalid (result will be allocated in this function)
+bool matf_transpose(matf_t* result, const matf_t* m1);
+
 void matf_free(matf_t* mat);
 
 void matf_print(const matf_t* m1);

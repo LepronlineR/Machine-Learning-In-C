@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include "matrix.h"
 
+#pragma region alloc
 matf_t matf_alloc(size_t row, size_t col){
     matf_t m;
     m.cols = col;
@@ -15,6 +16,16 @@ matf_t matf_alloc(size_t row, size_t col){
     return m;
 }
 
+void matf_free(matf_t* mat){
+    for(int x = 0; x < mat->rows; x++){
+        free(mat->data[x]);
+    }
+
+    free(mat->data);
+}
+#pragma endregion
+
+#pragma region set
 void matf_set_all(matf_t* m, float num){
     for(size_t row = 0; row < m->rows; row++){
         for(size_t col = 0; col < m->cols; col++){
@@ -31,7 +42,9 @@ bool matf_set_one(matf_t* m, size_t row, size_t col, float num){
     m->data[row][col] = num;
     return true;
 }
+#pragma endregion
 
+#pragma region sum/dot
 bool matf_sum(const matf_t* m1, matf_t* m2){
     // check for validity
     if(m1->cols != m2->cols || m1->rows != m2->rows)
@@ -84,12 +97,16 @@ bool matf_sum_n(matf_t* result, const matf_t* m1, const matf_t* m2){
     return true;
 }
 
-void matf_free(matf_t* mat){
-    for(int x = 0; x < mat->rows; x++){
-        free(mat->data[x]);
-    }
+#pragma endregion
+
+bool matf_transpose(matf_t* result, const matf_t* m1){
     
-    free(mat->data);
+    *result = matf_alloc(m1->cols, m1->rows);
+
+    
+
+    return true;
+
 }
 
 void matf_print(const matf_t* m1){
