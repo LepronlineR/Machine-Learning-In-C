@@ -103,10 +103,13 @@ bool matf_transpose(matf_t* result, const matf_t* m1){
     
     *result = matf_alloc(m1->cols, m1->rows);
 
-    
+    for(size_t row = 0; row < m1->rows; row++){
+        for(size_t col = 0; col < m1->cols; col++){
+            result->data[col][row] = m1->data[row][col];
+        }
+    }
 
     return true;
-
 }
 
 void matf_print(const matf_t* m1){
