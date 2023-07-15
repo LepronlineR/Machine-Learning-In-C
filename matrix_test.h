@@ -3,8 +3,7 @@
 
 #include <stdbool.h>
 
-bool matrix_testing_suite_two();
-
 bool matrix_testing_suite_one();
+bool matrix_testing_suite_two();
 
 #endif

@@ -44,7 +44,7 @@ bool matf_set_one(matf_t* m, size_t row, size_t col, float num){
 }
 #pragma endregion
 
-#pragma region sum/dot
+#pragma region sum/dot/transpose
 bool matf_sum(const matf_t* m1, matf_t* m2){
     // check for validity
     if(m1->cols != m2->cols || m1->rows != m2->rows)
@@ -97,8 +97,6 @@ bool matf_sum_n(matf_t* result, const matf_t* m1, const matf_t* m2){
     return true;
 }
 
-#pragma endregion
-
 bool matf_transpose(matf_t* result, const matf_t* m1){
     
     *result = matf_alloc(m1->cols, m1->rows);
@@ -111,6 +109,8 @@ bool matf_transpose(matf_t* result, const matf_t* m1){
 
     return true;
 }
+
+#pragma endregion
 
 void matf_print(const matf_t* m1){
     for(size_t row = 0; row < m1->rows; row++){

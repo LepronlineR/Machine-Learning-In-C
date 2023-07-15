@@ -7,25 +7,7 @@
 
 bool matrix_testing_suite_two(){
 
-    // transpose a matrix
-    matf_t m1 = matf_alloc(3, 3);
-    assert(matf_set_one(&m1, 0, 0, 1.0f));
-    assert(matf_set_one(&m1, 0, 1, 2.0f));
-    assert(matf_set_one(&m1, 0, 2, 3.0f));
-    assert(matf_set_one(&m1, 1, 0, 4.0f));
-    assert(matf_set_one(&m1, 1, 1, 5.0f));
-    assert(matf_set_one(&m1, 1, 2, 6.0f));
-    assert(matf_set_one(&m1, 2, 0, 7.0f));
-    assert(matf_set_one(&m1, 2, 1, 8.0f));
-    assert(matf_set_one(&m1, 2, 2, 9.0f));
     
-    matf_t m2;
-    assert(matf_transpose(&m2, &m1));
-    printf("M1: \n");
-    matf_print(&m1);
-    printf("M2: \n");
-    matf_print(&m2); 
-    printf("\n");
 
     return true;
 }
@@ -93,6 +75,26 @@ bool matrix_testing_suite_one(){
     matf_print(&m2); 
     printf("M5: \n");
     matf_print(&m5); 
+    printf("\n");
+
+    // transpose a matrix
+    matf_t m6 = matf_alloc(3, 3);
+    assert(matf_set_one(&m6, 0, 0, 1.0f));
+    assert(matf_set_one(&m6, 0, 1, 2.0f));
+    assert(matf_set_one(&m6, 0, 2, 3.0f));
+    assert(matf_set_one(&m6, 1, 0, 4.0f));
+    assert(matf_set_one(&m6, 1, 1, 5.0f));
+    assert(matf_set_one(&m6, 1, 2, 6.0f));
+    assert(matf_set_one(&m6, 2, 0, 7.0f));
+    assert(matf_set_one(&m6, 2, 1, 8.0f));
+    assert(matf_set_one(&m6, 2, 2, 9.0f));
+    
+    matf_t m7;
+    assert(matf_transpose(&m7, &m6));
+    printf("M6: \n");
+    matf_print(&m6);
+    printf("M7: \n");
+    matf_print(&m7); 
     printf("\n");
 
     return true;
