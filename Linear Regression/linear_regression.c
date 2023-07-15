@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "pbPlots.h"
-#include "supportLib.h"
+//#include "pbPlots.h"
+//#include "supportLib.h"
 
 /*
 
@@ -64,9 +64,9 @@ int main() {
     srand(42);
 
     // x and Y in/out
-    float x[] = {1, 2, 3, 4, 5, 6};
-    float Y[] = {2, 4, 6, 8, 10, 12};
-    int dataSize = 6;
+    float x[] = {0.5f, 1, 2, 4, 8, 16, 32, 64, 128};
+    float Y[] = {0.25f, 0.5, 1, 2, 4, 8, 16, 32, 64};
+    int dataSize = 9;
 
     // the W that changes
     float w = randFloat() * 10.0f;
@@ -108,7 +108,7 @@ int main() {
     //}
 
     // plot
-    
+    /*
 	_Bool success;
 
 	StartArenaAllocator();
@@ -130,7 +130,8 @@ int main() {
 	}
 
 	FreeAllocations();
-    
+    */
+
     // free xs and ys
     free(xs);
     free(ys);
